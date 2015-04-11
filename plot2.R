@@ -25,6 +25,7 @@ subset <- mutate(subset, DateTime=as.POSIXct(strptime(paste(Date, ' ', Time), '%
 
 subset$Global_active_power = as.double(subset$Global_active_power)
 
+Sys.setlocale("LC_TIME", "en_GB")  # OS X, in UTF-8
 png(file='plot2.png', width=480, height=480)
 with(subset, plot(Global_active_power ~ DateTime, type='n', xlab='', ylab='Global Active Power (kilowatts)'))
 with(subset, lines(Global_active_power ~ DateTime, lwd=1))
